@@ -15,7 +15,8 @@ odoo.define('web_float_empty', function(require) {
                 no_default_value set to 1.
             */
             if (this.options.no_default_value === 1){
-                this.node.attrs.placeholder = '0,00';
+                var precision = this.digits[1];
+                this.node.attrs.placeholder = '0,' + '0'.repeat(precision);
                 this.set({'value': value_});
             } else {
                 this._super(value_);
