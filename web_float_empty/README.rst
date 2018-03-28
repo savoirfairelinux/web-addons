@@ -1,5 +1,5 @@
-Web Float Empty
-===============
+Web Float Field Empty
+=====================
 Remove default value 0,00 on fields of type float that have
 the option no_default_value set to True and add a placeholder with
 the same value (taking in consideration the float precision) instead.
