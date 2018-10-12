@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+      <template id="assets_backend" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+           <!--<script src="/project_resource_calendar/static/src/js/web_calendar_custom.js" rel="text/javascript"/>-->
+        </xpath>
+      </template>
+    </data>
+
+    <!-- Calendar Settings View Item form: -->
+    <record id="calendar_settings_view_form" model="ir.ui.view">
+        <field name="name">Setting view form</field>
+        <field name="model">setting</field>
+        <field name="arch" type="xml">
+
+            <form string="Settings" class="settings-form">
+                <h1>Configuration du calendrier</h1>
+                <sheet>
+                    <group>
+                        <field name="name" string="Entrez le nom"/>
+                        <field name="isActive" string="Cette configuration est active"/>
+                        <field name="startTime" string="Heure de début" widget="float_time"/>
+                        <field name="endTime" string="Heure de fin" widget="float_time"/>
+                        <field name="startWorkTime" string="Heure de début de travail" widget="float_time"/>
+                        <field name="firstDayOfWeek" string="Premier jour de la semaine" type="selection"/>
+                        <field name="weekend" string="Afficher les weekends" type="checkbox"/>
+                        <field name="eventOverlap" string="Permettre l'enchevêtrement des événements sur un même créneau" type="checkbox"/>
+                        <field name="minutesPerRow" string="Durée d'un créneau en minutes" type="checkbox"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Calendar Settings View Item tree list: -->
+    <record id="calendar_settings_view_tree" model="ir.ui.view">
+        <field name="name">Setting view tree</field>
+        <field name="model">setting</field>
+        <field name="arch" type="xml">
+
+            <tree string="Settings" >
+                    <field name="name"/>
+                    <field name="isActive"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Action for Calendar Settings -->
+    <record id="action_calendar_settings" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="res_model">setting</field>
+        <field name="view_type">form</field>
+        <field name="view_id" ref="calendar_settings_view_tree"/>
+    </record>
+
+    <!-- Menu item for Calendar Settings -->
+    <menuitem
+        id="menu_calendar_settings"
+        parent="calendar.menu_calendar_configuration"
+        action="action_calendar_settings"
+        groups="base.group_no_one"/>
+
+</odoo>

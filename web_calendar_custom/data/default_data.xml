@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Default data used to populate Setting object to ensure continuity with the Javascript /static/src/js/web_calendar_custom.js -->
+    <data noupdate="1">
+        <record id="web_calendar_custom_default_data" model="setting">
+            <field name="name" >Default configuration</field>
+            <field name="isActive" eval="True"/>
+            <field name="startTime" type="float">0</field>
+            <field name="endTime" type="float">23</field>
+            <field name="startWorkTime" type="float">8</field>
+            <field name="firstDayOfWeek" eval="0" />
+            <field name="weekend" eval="True"/>
+            <field name="eventOverlap" eval="True"/>
+            <field name="minutesPerRow" type="int">15</field>
+        </record>
+    </data>
+</odoo>
