@@ -1,8 +1,7 @@
 # Copyright 2018 Savoir-faire Linux
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 import odoo
-from odoo import _, api, fields, models
-from odoo.tools import html2plaintext
+from odoo import fields, models
 
 class Setting(models.Model):
     _name = 'setting'
@@ -30,7 +29,3 @@ class Setting(models.Model):
 
     def get_settings(self):
         return self.env['setting'].browse(1)
-
-
-
-
