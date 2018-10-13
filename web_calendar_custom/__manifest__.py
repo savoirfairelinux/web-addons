@@ -15,7 +15,9 @@
     ],
     'data': [
         'data/default_data.xml',
+        'data/ir_config_parameter.xml',
         'views/web_calendar_custom.xml',
+        'views/res_config_views.xml',
         'static/src/js/web_calendar_custom.js'
     ],
     'installable': True,
