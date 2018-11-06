@@ -8,7 +8,6 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-10-16 21:26+0000\n"
 "PO-Revision-Date: 2018-10-16 18:12-0400\n"
-
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "Language: fr\n"
