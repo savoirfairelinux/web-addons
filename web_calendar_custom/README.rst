@@ -17,7 +17,6 @@ In order to change the « Calendar Settings »:
 =========================================
 Français : Paramètrage du calendrier Odoo
 =========================================
-This module allow changing Odoo default calendar settings (based on Javascript library "http://fullcalendar.io/")
 Ce module permet de changer les paramètres par défault du calendrier Odoo
 (en se basant sur la librairie Javascript "http://fullcalendar.io/")
 
