@@ -14,7 +14,10 @@ class ResConfigSettings(models.TransientModel):
                                                    ('1', 'Monday'),
                                                    ('2', 'Tuesday')],
                                                   default='1')
-    calendar_row_duration = fields.Float('Calendar Row Duration')
+    calendar_row_duration = fields.Selection([('0.25', '00:15'),
+                                                   ('0.5', '00:30'),
+                                                   ('1.0', '01:00')],
+                                                  default='0.25')
     is_weekend_active = fields.Boolean('Calendar Weekends',
                                                 default=True)
     is_event_overlap = fields.Boolean('Calendar Overlap Events',
