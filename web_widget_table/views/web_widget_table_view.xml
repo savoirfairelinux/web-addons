@@ -1,0 +1,69 @@
+<odoo>
+  <data>
+    
+    <record model="ir.ui.view" id="web_widget_table.list">
+      <field name="name">web_widget_table list</field>
+      <field name="model">web_widget_table.web_widget_table</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+    
+    <record model="ir.ui.view" id="web_widget_table.dorm">
+      <field name="name">web_widget_table form</field>
+      <field name="model">web_widget_table.web_widget_table</field>
+      <field name="arch" type="xml">
+        <form>
+        <group>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+          <field name="task_ids" widget="widget_table" context="{'model':'project.task'}"/>
+        </group>        
+        </form>
+      </field>
+    </record>
+    
+
+    
+    <record model="ir.actions.act_window" id="web_widget_table.action_window">
+      <field name="name">web_widget_table window</field>
+      <field name="res_model">web_widget_table.web_widget_table</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    
+
+    
+    <record model="ir.actions.server" id="web_widget_table.action_server">
+      <field name="name">web_widget_table server</field>
+      <field name="model_id" ref="model_web_widget_table_web_widget_table"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+    
+
+    
+    <menuitem name="web_widget_table" id="web_widget_table.menu_root"/>
+    
+    
+    <menuitem name="Menu 1" id="web_widget_table.menu_1" parent="web_widget_table.menu_root"/>
+    <menuitem name="Menu 2" id="web_widget_table.menu_2" parent="web_widget_table.menu_root"/>
+    
+    
+    <menuitem name="List" id="web_widget_table.menu_1_list" parent="web_widget_table.menu_1"
+              action="web_widget_table.action_window"/>
+    <menuitem name="Server to list" id="web_widget_table" parent="web_widget_table.menu_2"
+              action="web_widget_table.action_server"/>
+    
+  </data>
+</odoo>
