@@ -1,36 +1,32 @@
-
 odoo.define('web_widget_table', function(require)
 {
     var registry = require('web.field_registry'),
-        AbstractField = require('web.AbstractField');
-    var FieldMany2OneTable = AbstractField.extend({
-        className: 'oe_form_field_many2one_buttons',
+        AbstractField = require('web.AbstractField'),
+        FieldMany2OneTable = AbstractField.extend({
+        className: 'oe_form_field_table',
         supportedFieldTypes: ['many2one','char'],
-        
         init: function()
         {
             this._super.apply(this, arguments);
         },
-        events: {
-            'click .btn': '_button_clicked',
-        },
-        
         _render: function()
         {
-            var self = this;
-            var field = this.nodeOptions['field_name'];
-            var fieldModel = this.record.data[field].model
-            var fieldRecordIds = this.record.data[field].res_ids
-            var table = `<table><thead><tr>`;
-            var table_fields = this.nodeOptions['fields'];
-            var headers = this.nodeOptions['headers'];
-        
+            this.$el.empty(); 
+            var field = this.nodeOptions['field_name'],
+                fieldModel = this.record.data[field].model,
+                fieldRecordIds = this.record.data[field].res_ids,
+                table = `<table><thead><tr>`,
+                table_fields = this.nodeOptions['fields'],
+                headers = this.nodeOptions['headers'];
+                searching = this.nodeOptions['searching'];
+                paging = this.nodeOptions['paging'];
+                info = this.nodeOptions['info'],
+                datatable_params = this.nodeOptions['datatable_params'];
+
             headers.forEach(element => {
                 table += '<th>' + element + '</th>';
             });
-            table+= `</tr>
-                </thead>
-                <tbody>`;
+            table+= `</tr></thead><tbody>`;
             this._rpc({
                 model: fieldModel,
                 method: 'read',
@@ -44,17 +40,15 @@ odoo.define('web_widget_table', function(require)
                         });
                         table+='</tr>'
                     });
-                    table+= `</tbody></table>` 
-                    self.$el.append(
+                    table+= `</tbody></table>`;
+                    this.$el.append(
                         jQuery(table).attr({
                             'id': 'datatable',
                             'class': 'display',
                         })
                     );
-                    jQuery('#datatable').DataTable({searching: false, paging: false, info: false});
-                });
-                this.$el.find('table').
-                prop('disabled', this.mode == 'readonly');
+                    jQuery('#datatable').DataTable(datatable_params);
+                }.bind(this));             
         }
     });
     registry.add('widget_table', FieldMany2OneTable);
@@ -63,4 +57,3 @@ odoo.define('web_widget_table', function(require)
         FieldMany2OneTable: FieldMany2OneTable,        
     }
 });
-

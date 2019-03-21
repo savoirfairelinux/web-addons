@@ -1,4 +1,5 @@
-.oe_form_field_many2one_buttons button
+.oe_form_field_table
 {
     margin: 0em .2em .2em 0em;
+    visibility: visible !important;
 }
