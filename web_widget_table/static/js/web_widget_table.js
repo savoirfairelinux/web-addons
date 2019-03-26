@@ -2,9 +2,9 @@ odoo.define('web_widget_table', function(require)
 {
     var registry = require('web.field_registry'),
         AbstractField = require('web.AbstractField'),
-        FieldMany2OneTable = AbstractField.extend({
+        FieldDataTable = AbstractField.extend({
         className: 'oe_form_field_table',
-        supportedFieldTypes: ['many2one','char'],
+        supportedFieldTypes: ['char'],
         init: function()
         {
             this._super.apply(this, arguments);
@@ -18,9 +18,6 @@ odoo.define('web_widget_table', function(require)
                 table = `<table><thead><tr>`,
                 table_fields = this.nodeOptions['fields'],
                 headers = this.nodeOptions['headers'];
-                searching = this.nodeOptions['searching'];
-                paging = this.nodeOptions['paging'];
-                info = this.nodeOptions['info'],
                 datatable_params = this.nodeOptions['datatable_params'];
 
             headers.forEach(element => {
@@ -51,9 +48,9 @@ odoo.define('web_widget_table', function(require)
                 }.bind(this));             
         }
     });
-    registry.add('widget_table', FieldMany2OneTable);
+    registry.add('widget_table', FieldDataTable);
 
     return {
-        FieldMany2OneTable: FieldMany2OneTable,        
+        FieldDataTable: FieldDataTable,        
     }
 });
