@@ -15,6 +15,7 @@ Usage
 Use this widget by saying:
 
 .. code-block:: xml
+   :linenos:
 <field name="my_table" widget="widget_table" options="{
                             'field_name': 'child_ids',
                             'datatable_params':{'searching': False,
