@@ -102,6 +102,32 @@ odoo.define('web_calendar_custom.renderer_setting', function (require) {
                         firstDay: String(config_values.calendar_first_day_of_week),
                         weekends: config_values.is_weekend_active,
                         slotEventOverlap: config_values.is_event_overlap,
+                        eventOverlap: function(stillEvent, movingEvent) {
+                            if(self.model == 'calendar.event'){
+                                if(movingEvent.record["start"]._d < Date.now() || movingEvent.record["state"] == "cancelled"){
+                                    return true;
+                                }
+                                if(typeof stillEvent.record["room_id"][0] != 'undefined' && typeof movingEvent.record["room_id"][0] != 'undefined'){
+                                    if(stillEvent.record["room_id"][0] == movingEvent.record["room_id"][0] && stillEvent.record["allow_double_book"] == false){
+                                        return false;
+                                    }
+                                }
+                                if(typeof stillEvent.record["non_bookable_equipment_ids"] != 'undefined' && typeof movingEvent.record["non_bookable_equipment_ids"] != 'undefined'){
+                                    var overlap = true;
+                                    stillEvent.record["non_bookable_equipment_ids"].forEach(function (equipmentStill){
+                                       movingEvent.record["non_bookable_equipment_ids"].forEach(function (equipmentMoving){
+                                            if(equipmentStill == equipmentMoving) {
+                                                overlap = false;
+                                                return false;
+                                            }
+                                       });
+                                    });
+                                    return overlap;
+                                }
+                            }
+                            return true;
+                        }
+
                     });
 
                     this.$calendar.fullCalendar('destroy');
