@@ -19,7 +19,6 @@ odoo.define('web_widget_table', function(require)
                 table_fields = this.nodeOptions['fields'],
                 headers = this.nodeOptions['headers'];
                 datatable_params = this.nodeOptions['datatable_params'];
-
             headers.forEach(element => {
                 table += '<th>' + element + '</th>';
             });
@@ -33,7 +32,14 @@ odoo.define('web_widget_table', function(require)
                     Array.from(result).forEach(record => {
                         table+='<tr>'
                         table_fields.forEach(function(key){
-                            table += (record[key] ? '<td>' + record[key] + '</td>': '<td></td>');      
+                            if(key.includes("date")){
+                                time = moment.utc(record[key], "DD-MM-YYYY h:mm:ss")
+                                local_time= time.clone().local().format("DD-MM-YYYY h:mm:ss")
+                                table += (record[key] ? '<td>' + local_time + '</td>': '<td></td>');
+                            }
+                            else{
+                                table += (record[key] ? '<td>' + record[key] + '</td>': '<td></td>');
+                            }      
                         });
                         table+='</tr>'
                     });
