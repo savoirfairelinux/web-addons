@@ -34,10 +34,6 @@ class ResConfigSettings(models.TransientModel):
          "(calendar_start_work_time < calendar_end_time) AND"
          "( calendar_start_time < 24) AND (calendar_end_time >= 0))",
          _('Start work time must be set between start and end time')),
-        ('check_calendar_row_duration',
-         "CHECK ((calendar_row_duration >= 0.25)"
-         "AND(calendar_row_duration <= 1))",
-         _('Row Duration must be between 15 minutes and 1 hour')),
     ]
 
     @api.model

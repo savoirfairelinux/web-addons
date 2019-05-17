@@ -40,7 +40,7 @@ odoo.define('web_calendar_custom.renderer_setting', function (require) {
                 this.$calendar = this.$(".o_calendar_widget");
 
                 //Documentation here : http://arshaw.com/fullcalendar/docs/
-                if(this.$calendar.fullCalendar != null){
+                if(this.$calendar.fullCalendar != null && typeof this.state != 'undefined'){
 
                        var fc_options = $.extend({}, this.state.fc_options, {
 
