@@ -99,7 +99,6 @@ odoo.define('web_calendar_custom.renderer_setting', function (require) {
                         maxTime: String(config_values.calendar_end_time).toHHMMSS(),
                         scrollTime: String(config_values.calendar_start_work_time).toHHMMSS(),
                         slotDuration: String(config_values.calendar_row_duration).toHHMMSS(),
-                        firstDay: String(config_values.calendar_first_day_of_week),
                         weekends: config_values.is_weekend_active,
                         slotEventOverlap: config_values.is_event_overlap,
                     });

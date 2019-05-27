@@ -10,18 +10,11 @@ class ResConfigSettings(models.TransientModel):
     calendar_start_time = fields.Float('Calendar Start Time')
     calendar_end_time = fields.Float('Calendar End Time')
     calendar_start_work_time = fields.Float('Calendar Start Working Time')
-    calendar_first_day_of_week = fields.Selection([('0', 'Sunday'),
-                                                   ('1', 'Monday'),
-                                                   ('2', 'Tuesday')],
-                                                  default='1')
     calendar_row_duration = fields.Selection([('0.25', '00:15'),
-                                                   ('0.5', '00:30'),
-                                                   ('1.0', '01:00')],
-                                                  default='0.25')
-    is_weekend_active = fields.Boolean('Calendar Weekends',
-                                                default=True)
-    is_event_overlap = fields.Boolean('Calendar Overlap Events',
-                                            default=False)
+                                              ('0.5', '00:30'),
+                                              ('1.0', '01:00')], default='0.5')
+    is_weekend_active = fields.Boolean('Calendar Weekends', default=True)
+    is_event_overlap = fields.Boolean('Calendar Overlap Events', default=True)
 
     _sql_constraints = [
         ('check_calendar_start_and_end_time',
@@ -49,9 +42,6 @@ class ResConfigSettings(models.TransientModel):
             calendar_start_work_time=self.env[
                 'ir.config_parameter'].sudo().get_param(
                 'web_calendar_custom.calendar_start_work_time'),
-            calendar_first_day_of_week=self.env[
-                'ir.config_parameter'].sudo().get_param(
-                'web_calendar_custom.calendar_first_day_of_week'),
             is_weekend_active=self.env[
                 'ir.config_parameter'].sudo().get_param(
                 'web_calendar_custom.is_weekend_active'),
@@ -76,9 +66,6 @@ class ResConfigSettings(models.TransientModel):
         self.env['ir.config_parameter'].sudo().set_param(
             'web_calendar_custom.calendar_start_work_time',
             self.calendar_start_work_time)
-        self.env['ir.config_parameter'].sudo().set_param(
-            'web_calendar_custom.calendar_first_day_of_week',
-            self.calendar_first_day_of_week)
         self.env['ir.config_parameter'].sudo().set_param(
             'web_calendar_custom.is_weekend_active',
             self.is_weekend_active)
