@@ -21,7 +21,7 @@ original_relaxng = view_validation.relaxng
 def relaxng(view_type):
     # Override the relaxng to modify calendar_view.rng calendar element
     # and modify calendar element by adding js_class attribute
-    override = 'calendar_event_view_colors/rng/add_js_class_attribute.xsl'
+    override = 'web_calendar_view_custom_colors/xsl/add_js_class_attribute.xsl'
     if view_type not in _relaxng_cache:
         rng_path = os.path.join('base', 'rng', '%s_view.rng' % view_type)
         with tools.file_open(rng_path) as frng:

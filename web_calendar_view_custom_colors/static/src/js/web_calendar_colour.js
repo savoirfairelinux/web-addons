@@ -1,4 +1,4 @@
-odoo.define('calendar_event_view_colors.calendar_colour', function (require) {
+odoo.define('web_calendar_view_custom_colors.calendar_colour', function (require) {
     "use strict";
 
     var CalendarView = require('web.CalendarView');
@@ -17,7 +17,6 @@ odoo.define('calendar_event_view_colors.calendar_colour', function (require) {
 
     var CalendarColourModel = CalendarModel.extend({
         _loadColors: function (element, events) {
-
             var self= this;
             var color_fields = rpc.query({
                 model: 'calendar.view.config',

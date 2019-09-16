@@ -2,16 +2,17 @@
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
 {
-    'name': 'Calendar Event View Colors',
+    'name': 'Calendar View Configuration',
     'version': '11.0.1.0.0',
     'author': 'Savoir-faire Linux, Odoo Community Association (OCA)',
     'maintainer': 'Savoir-faire Linux',
     'website': 'http://www.savoirfairelinux.com',
     'license': 'LGPL-3',
     'category': 'Calendar',
-    'summary': 'Calendar Event View Color',
+    'summary': 'Calendar View Colors Configuration',
     'depends': [
         'base',
+        'calendar',
     ],
     'external_dependencies': {
         'python': [],

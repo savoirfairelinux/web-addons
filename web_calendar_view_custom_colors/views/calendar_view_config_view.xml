@@ -1,69 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="action_calendar_color_tag_fields" model="ir.actions.act_window">
-        <field name="name">calendar.color.tag.fields</field>
-        <field name="res_model">calendar.color.tag.fields</field>
+
+    <record id="action_calendar_view_config" model="ir.actions.act_window">
+        <field name="name">calendar.view.config</field>
+        <field name="res_model">calendar.view.config</field>
         <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
     </record>
 
-    <menuitem id="calendar_color_tag_fields_menu"
-              name="Calendar color Tag Fields"
-              />
+    <menuitem id="calendar_view_config_submenu"
+              name="Calendar View Config"
+              parent="base.menu_custom"
+              action="action_calendar_view_config"/>
 
-    <menuitem id="calendar_color_tag_fields_submenu"
-              name="Calendar color Tag Fields"
-              parent="calendar_color_tag_fields_menu"
-              action="action_calendar_color_tag_fields"/>
-
-    <record id="calendar_color_tag_fields_form" model="ir.ui.view">
-        <field name="name">calendar color tag fields</field>
-        <field name="model">calendar.color.tag.fields</field>
+    <record id="calendar_view_config_form" model="ir.ui.view">
+        <field name="name">calendar.view.config</field>
+        <field name="model">calendar.view.config</field>
         <field name="arch" type="xml">
-            <form string="calendar color tag fields">
+            <form string="calendar View Config">
                 <sheet>
                     <group>
                         <field name="name"/>
                         <field name="model_id"/>
                         <field name="model_name"/>
                         <field name="allow_calendar_tag_color"/>
-                        <field name="tag_field_id" attrs="{'invisible': [('allow_calendar_tag_color', '=', False)]}"/>
-                        <field name="tag_field_name" invisible="1"/>
-                        <field name="tag_field_model" invisible="1"/>
-                        <field name="color_field_id"  attrs="{'invisible': [('allow_calendar_tag_color', '=', False)]}"/>
-                        <field name="color_field_name" invisible="1"/>
-                        <field name="font_color_field_id" attrs="{'invisible': [('allow_calendar_tag_color', '=', False)]}"/>
-                        <field name="font_color_field_name" invisible="1"/>
+                        <field name="tag_field_id" attrs="{'invisible': [('allow_calendar_tag_color', '=', False)], 'required': [('allow_calendar_tag_color', '=', True)]}"/>
+                        <field name="color_field_id"  attrs="{'invisible': [('allow_calendar_tag_color', '=', False)], 'required': [('allow_calendar_tag_color', '=', True)]}"/>
+                        <field name="font_color_field_id" attrs="{'invisible': [('allow_calendar_tag_color', '=', False)], 'required': [('allow_calendar_tag_color', '=', True)]}"/>
                         <field name="allow_calendar_hatched"/>
-                        <field name="calendar_state_field_id" attrs="{'invisible': [('allow_calendar_hatched', '=', False)]}"/>
-                        <field name="calendar_state_field_name" invisible="1"/>
-                        <field name="calendar_state_field_type" invisible="1"/>
-                        <field name="calendar_state_field_relation" invisible="1"/>
+                        <field name="calendar_state_field_id" attrs="{'invisible': [('allow_calendar_hatched', '=', False)], 'required': [('allow_calendar_hatched', '=', True)]}"/>
                         <field name="hatched_states" attrs="{'invisible': [('allow_calendar_hatched', '=', False)]}"/>
+                        <field name="calendar_state_field_relation" attrs="{'invisible': [('allow_calendar_hatched', '=', False)]}"/>
+                        <field name="hatched_state_ids" attrs="{'invisible': [('allow_calendar_hatched', '=', False)]}"/>
+                        <button type="object" name="refresh_hatched_states" attrs="{'invisible': [('allow_calendar_hatched', '=', False)]}"></button>
                     </group>
                 </sheet>
             </form>
         </field>
     </record>
-    <record id="calendar_color_tag_fields_tree" model="ir.ui.view">
-        <field name="name">calendar color tag fields</field>
-        <field name="model">calendar.color.tag.fields</field>
+
+    <record id="calendar_view_config_tree" model="ir.ui.view">
+        <field name="name">calendar.view.config</field>
+        <field name="model">calendar.view.config</field>
         <field name="arch" type="xml">
-            <tree string="calendar color tag fields">
+            <tree string="Calendar View Config">
                 <field name="name"/>
                 <field name="model_id"/>
                 <field name="model_name"/>
                 <field name="tag_field_id"/>
-                <field name="tag_field_name"/>
-                <field name="tag_field_model"/>
                 <field name="color_field_id"/>
-                <field name="color_field_name"/>
                 <field name="font_color_field_id"/>
-                <field name="font_color_field_name"/>
                 <field name="calendar_state_field_id"/>
-                <field name="calendar_state_field_name"/>
-                <field name="calendar_state_field_type"/>
             </tree>
         </field>
     </record>
+
 </odoo>
