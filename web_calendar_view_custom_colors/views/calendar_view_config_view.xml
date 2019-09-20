@@ -30,9 +30,6 @@
                         <field name="allow_calendar_hatched"/>
                         <field name="calendar_state_field_id" attrs="{'invisible': [('allow_calendar_hatched', '=', False)], 'required': [('allow_calendar_hatched', '=', True)]}"/>
                         <field name="hatched_states" attrs="{'invisible': [('allow_calendar_hatched', '=', False)]}"/>
-                        <field name="calendar_state_field_relation" attrs="{'invisible': [('allow_calendar_hatched', '=', False)]}"/>
-                        <field name="hatched_state_ids" attrs="{'invisible': [('allow_calendar_hatched', '=', False)]}"/>
-                        <button type="object" name="refresh_hatched_states" attrs="{'invisible': [('allow_calendar_hatched', '=', False)]}"></button>
                     </group>
                 </sheet>
             </form>
