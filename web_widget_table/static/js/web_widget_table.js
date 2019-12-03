@@ -33,8 +33,7 @@ odoo.define('web_widget_table', function(require)
                         table+='<tr>'
                         table_fields.forEach(function(key){
                             if(key.includes("date")){
-                                time = moment.utc(record[key], "DD-MM-YYYY h:mm:ss")
-                                local_time= time.clone().local().format("DD-MM-YYYY H:mm:ss")
+                                local_time= moment.utc(record[key] ).local().format('DD-MM-YYYY H:mm:ss');
                                 table += (record[key] ? '<td>' + local_time + '</td>': '<td></td>');
                             }
                             else{
