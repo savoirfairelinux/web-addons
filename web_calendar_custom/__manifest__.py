@@ -21,4 +21,7 @@
     ],
     'installable': True,
     'application': True,
+    'images': [
+        'static/description/main_screenshot.png'
+    ]
 }
